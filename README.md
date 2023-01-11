@@ -4,6 +4,21 @@ It solves the problem of determining the properties of Boolean function on a sin
 
 It is one of the first examples of quantum algorithms that provided exponential speedup over their classical counterparts.
 
+The circuit diagram of the Deutsch-Jozsa algorithm is as follows for 3 Qubit input:
+```
+     ┌───┐      ░ ┌─────────────────┐ ░ ┌───┐ ░ ┌─┐   
+q_0: ┤ H ├──────░─┤0                ├─░─┤ H ├─░─┤M├───
+     ├───┤      ░ │                 │ ░ ├───┤ ░ └╥┘┌─┐
+q_1: ┤ H ├──────░─┤1                ├─░─┤ H ├─░──╫─┤M├
+     ├───┤┌───┐ ░ │                 │ ░ └───┘ ░  ║ └╥┘
+q_2: ┤ X ├┤ H ├─░─┤2 A Oracle Block ├─░───────░──╫──╫─
+     └───┘└───┘ ░ │  That We Don't  │ ░       ░  ║  ║ 
+c_0: ═════════════╡0     Know       ╞════════════╩══╬═
+                  │                 │               ║ 
+c_1: ═════════════╡1                ╞═══════════════╩═
+                  └─────────────────┘                 
+```
+
 ## Usage
 It is recommended to use a virtual environment to run the program. To install the required dependencies, run the following command:
 ```bash
