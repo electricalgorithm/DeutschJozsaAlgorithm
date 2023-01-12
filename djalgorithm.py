@@ -31,7 +31,7 @@ class DJAlgorithm:
             return {"result": "Balanced"}
 
     @staticmethod
-    def give_a_balanced_oracle(inputs_count: int) -> Instruction:
+    def give_a_balanced_function(inputs_count: int) -> Instruction:
         """Returns a balanced oracle function.
 
         :param inputs_count: The number of input qubits.
@@ -63,7 +63,7 @@ class DJAlgorithm:
         return inst
 
     @staticmethod
-    def give_a_constant_oracle(inputs_count: int) -> Instruction:
+    def give_a_constant_function(inputs_count: int) -> Instruction:
         """Returns a constant oracle function.
 
         :param inputs_count: The number of input qubits.
@@ -80,14 +80,14 @@ class DJAlgorithm:
         return inst
 
     @staticmethod
-    def _construct_the_circuit(oracle_block: QuantumCircuit) -> QuantumCircuit:
+    def _construct_the_circuit(function_block: QuantumCircuit) -> QuantumCircuit:
         """It creates the circuit for the Deutsch-Jozsa algorithm.
 
-        :param oracle_block: The oracle block to check with Deutsch-Jozsa algorithm.
+        :param function_block: The oracle block to check with Deutsch-Jozsa algorithm.
         :return: The circuit for the Deutsch-Jozsa algorithm.
         """
         # Get the number of input qubits.
-        input_length = oracle_block.num_qubits - 1
+        input_length = function_block.num_qubits - 1
 
         _circuit = QuantumCircuit(input_length + 1, input_length)
 
@@ -102,7 +102,7 @@ class DJAlgorithm:
 
         # Apply the oracle block.
         _circuit.append(
-            oracle_block, range(oracle_block.num_qubits), range(oracle_block.num_clbits)
+            function_block, range(function_block.num_qubits), range(function_block.num_clbits)
         )
         _circuit.barrier()
 
@@ -127,14 +127,14 @@ if __name__ == "__main__":
     inputs_count = int(input("> Enter the number of input qubits: "))
 
     # Get the oracle block.
-    oracle_type = input("> Enter the type of oracle (c)onstant/(b)alanced: ")
+    oracle_type = input("> Enter the type of function (c)onstant/(b)alanced: ")
     oracle_type = oracle_type.lower()
     if oracle_type == "constant" or oracle_type == "c":
-        block_to_test = DJAlgorithm.give_a_constant_oracle(inputs_count)
+        block_to_test = DJAlgorithm.give_a_constant_function(inputs_count)
     elif oracle_type == "balanced" or oracle_type == "b":
-        block_to_test = DJAlgorithm.give_a_balanced_oracle(inputs_count)
+        block_to_test = DJAlgorithm.give_a_balanced_function(inputs_count)
     else:
-        print("Invalid oracle type.")
+        print("Invalid function type.")
         exit(1)
 
     # Run the algorithm.

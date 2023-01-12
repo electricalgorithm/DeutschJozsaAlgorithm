@@ -36,12 +36,12 @@ from djalgorithm import DJAlgorithm
 
 n = 4  # Number of qubits.
 
-# Create an oracle to test with.
-# some_oracle = DJAlgorithm.give_a_constant_oracle(n)
-some_oracle = DJAlgorithm.give_a_balanced_oracle(n)
+# Create a function to test with.
+# some_function = DJAlgorithm.give_a_constant_function(n)
+some_function = DJAlgorithm.give_a_balanced_function(n)
 
 # Use the Deutsch-Jozsa algorithm to solve which function it is.
-result = DJAlgorithm.simulate(some_oracle)
+result = DJAlgorithm.simulate(some_function)
 
 # Print the result.
 print(result["result"])
