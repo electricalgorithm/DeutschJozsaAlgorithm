@@ -2,9 +2,7 @@
 The Deutsch-Jozsa algorithm is a quantum algorithm for determining the properties of Boolean functions. Specifically, it can determine whether a given function is constant or balanced, where a constant function always evaluates to the same output (either 0 or 1), and a balanced function evaluates to 0 for half of its inputs and 1 for the other half.
 It solves the problem of determining the properties of Boolean function on a single input in one query, where a classical algorithm would take at least n/2 queries where n is number of bits in input.
 
-It is one of the first examples of quantum algorithms that provided exponential speedup over their classical counterparts.
-
-The circuit diagram of the Deutsch-Jozsa algorithm is as follows for 3 Qubit input:
+It is one of the first examples of quantum algorithms that provided exponential speedup over their classical counterparts. The circuit diagram of the Deutsch-Jozsa algorithm is as follows for 3 Qubit input:
 ```
      ┌───┐      ░ ┌─────────────────┐ ░ ┌───┐ ░ ┌─┐   
 q_0: ┤ H ├──────░─┤0                ├─░─┤ H ├─░─┤M├───
